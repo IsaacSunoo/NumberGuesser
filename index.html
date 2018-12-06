@@ -17,11 +17,61 @@
         <div class="set-range">
           <span class="bold-grey">Set Range</span><br>
           <form class="range-box" method="post">
-            <label for="min-range">Min Range</label>
-            <input type="text" name="min-range" class="box-size">
-            <label for="max-range">Max Range</label>
-            <input type="text" name="max-range" class="box-size">
-            <input type="submit" name="update-range" value="Update" class="button-design">
+            <div class="upper-text">
+              <label for="min-range">Min Range</label><br>
+              <label for="max-range">Max Range</label>
+            </div>
+            <div class="lower-text">
+              <input type="number" name="min-range" class="box-size min-range">
+              <input type="number" name="max-range" class="box-size max-range">
+              <input type="submit" name="update-range" value="Update" class="button-design" id="update-range">
+            </div>
+        </div>
+        <div class="challenger-range-section background-settings">
+          <span class="lower-margin">The Current Range is</span>
+          <span class="min-number underline"><strong>1</strong></span>
+          to
+          <span class="max-number underline"><strong>100</strong></span>
+          <br><br>
+          <strong>Challenger 1</strong><br>
+          <form>
+            <label for="challenger1-name">Name</label>
+            <label for="challenger1-guess">Guess</label><br>
+            <input type="text" name="challenger1-name" class="challenger1-name">
+            <input type="number" name="challenger1-guess" class="challenger1-guess"><br><br>
+            <strong>Challenger 2</strong><br>
+            <label for="challenger2-name">Name</label>
+            <label for="challenger2-guess">Guess</label><br>
+            <input type="text" name="challenger2-name" class="challenger2-name">
+            <input type="number" name="challenger2-guess" class="challenger2-guess"><br><br>
+            <button type="submit" name="submit-guess" class="button-design" id="name-guess-submit">SUBMIT GUESS</button>
+          </form>
+            <button type="submit" name="reset-game" class="button-design">RESET GAME</button>
+            <button type="submit" name="clear-game" class="button-design">CLEAR GAME</button>
+        </div>
+        <!-- Player score section -->
+        <div class="score-section background-settings">
+          <div class="left-score">
+            <span class="lower-margin"><strong>Latest Score</strong></span><br>
+            <span class="display-name1"><strong>Challenger 1 Name</strong></span>
+            <br>
+            current guess
+            <br>
+            <span class="c1-current-guess current-guess">0</span><br>
+            that's too high
+            <!-- Insert challenge 1 guess number -->
+            <!-- Return if guess was to high or to low -->
+          </div>
+          <div class="right-score"><br>
+            <span class="display-name2"><strong>Challenger 2 Name</strong></span>
+            <br>
+            current guess
+            <br>
+            <span class="c2-current-guess current-guess">0</span><br>
+            that's too low
+            <!-- Insert challenge 2 guess number -->
+            <!-- Return if guess was to high or to low -->
+          </div>
         </div>
       </div>
       <div class="right-side column">
