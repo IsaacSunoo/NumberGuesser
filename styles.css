@@ -1,5 +1,25 @@
-* {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #404041;
+}
+
+header {
+  background-color: #404041;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 22px;
+}
+
+input {
+    height: 26px;
 }
 
 .left-side {
@@ -12,24 +32,101 @@
   background-color: #D0D2D3;
 }
 
+h1 {
+  font-size: 3em;
+  color: #DD1972;
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 700;
+  color: #404041;
+  padding-bottom: 6px;
+}
+
+.text-thinner {
+  font-weight: 300;
+}
+
 .title-caption {
   color: white;
   font-weight: 200;
   font-size: 14px;
 }
 
-.title-caption:before,
+.horizontal-line {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  flex-direction: row;
+  width: 415px;
+}
+
+form {
+  display: inline-block;
+}
+
+hr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+section article h3 {
+  padding: 4px 0px 6px 0px;
+}
+
+input,
+label {
+  display: block;
+}
+
+.align-input {
+  display: inline-block;
+}
+
+.range-row {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.min-range {
+  width: 30%;
+  display: block;
+  margin: 6px 0px 6px 0px;
+}
+
+.max-range {
+  width: 30%;
+  display: block;
+  margin: 6px 0px 6px 0px;
+}
+
+#update-range {
+  display: inline-block;
+  height: 26px;
+  width: 80px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.title-heading {
+  display: flex;
+  flex-direction: column;
+  width: 415px;
+}
+
+/* .title-caption:before,
 .title-caption:after {
   background-color: white;
   content: "";
-  display: inline-block;
+  display: grid;
   height: 1px;
   position: relative;
   vertical-align: middle;
-  width: 9%;
-}
+  width: 180px ;
+} */
 
-.title-caption:before {
+/* .title-caption:before {
   right: 0.5em;
   margin-left: -50%;
 }
@@ -37,21 +134,7 @@
 .title-caption:after {
   left: 0.5em;
   margin-right: -50%;
-}
-
-header {
-  background-color: #404041;
-  padding: 22px;
-}
-
-.header-title {
-  font-size: 3em;
-  color: #DD1972;
-}
-
-.text-thinner {
-  font-weight: 220;
-}
+} */
 
 .button-design {
   padding: 5px 15px;
@@ -62,6 +145,8 @@ header {
   color: white;
   margin-left: 19px;
   font-weight: bold;
+  transition: 0.3s;
+  outline: none;
 }
 
 .button-design:hover {
@@ -74,6 +159,10 @@ header {
   padding: 10px;
 }
 
+.challenger-range-section {
+  padding-top: 10px;
+}
+
 .box-size {
   width: 150px;
 }
@@ -81,10 +170,6 @@ header {
 .bold-grey {
   font-weight: bolder;
   color: #404041;
-}
-
-.lower-margin {
-  /* padding-bottom: 15px; */
 }
 
 .row:after {
@@ -97,29 +182,37 @@ header {
   color: #DD1972;
   font-weight: 800;
   font-size: 3em;
+  text-align: center;
 }
+
+.box-border {
+  border:#DCDCDC solid 2px;
+}
+
 .set-range {
   background-color: white;
   padding-left: 15px;
   padding-bottom: 15px;
-  margin-left: 12px;
+  margin-left: 5px;
+}
+
+ .challenger-name {
+  width: 225px;
+  margin: 0px 10px 15px 0px;
+}
+
+.challenger-guess {
+  width: 160px;
+  margin-bottom: 15px;
 }
 
 .upper-text {
   display: flex;
-
 }
 
-.lower-text {
-
-}
-
-.underline {
+.underline-bold {
   text-decoration: underline;
-}
-
-.max-range {
-  grid-column-end: 1;
+  font-weight: bolder;
 }
 
 .background-settings {
@@ -127,11 +220,94 @@ header {
   margin-top: 3%;
   padding-left: 15px;
   padding-bottom: 15px;
-  margin-left: 12px;
+  margin-left: 5px;
+  border:#DCDCDC solid 2px;
+}
+
+.disabled-btn {
+  background-color: #D0D2D3;
+  color: #FFFFFF;
 }
 
 .score-section {
-  display: flex;
-  justify-content: space-around;
-  padding-left: 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding-top: 8px;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+}
+
+.margin-bottom {
+  margin-bottom: 8px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.large-text {
+  font-size: 20px;
+}
+
+.left-score {
+  grid-column: 1;
+  border-right: solid;
+  border-color: grey;
+  border-width: medium;
+}
+
+.right-score {
+  /* display: grid; */
+  grid-column: 2;
+}
+
+.winner-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: white;
+  padding: 10px 6px 8px 6px;
+}
+
+.card-top {
+  padding-bottom: 4px;
+}
+
+.card-middle {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.card-middle span {
+  font-size: 30px;
+  color: #6E6E6E;
+}
+
+.card-top .display-name1,
+.card-top .display-name2 {
+  display: inline-block;
+  color: #6E6E6E;
+}
+
+.winner-name {
+  font-size: 30px;
+  font-weight: bolder;
+  color: #6E6E6E;
+}
+
+.margin-left-right {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  .col-container {
+    display: block;
+  }
+  .col-content {
+    width:100%;
+  }
 }
