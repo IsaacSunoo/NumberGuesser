@@ -299,15 +299,26 @@ label {
   margin-right: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
+  .row {
+    display: block;
+  }
+  .column {
+    width: 100%;
+  }
+
+  .title-heading {
+
+  }
+
 
 }
 
 @media screen and (max-width: 768px) {
-  .col-container {
+  .row {
     display: block;
   }
-  .col-content {
+  .column {
     width:100%;
   }
 }
