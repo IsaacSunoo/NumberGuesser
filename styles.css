@@ -257,7 +257,6 @@ label {
 }
 
 .right-score {
-  /* display: grid; */
   grid-column: 2;
 }
 
@@ -266,6 +265,7 @@ label {
   transition: 0.3s;
   background-color: white;
   padding: 10px 6px 8px 6px;
+  margin: 8px 10px 6px 10px;
 }
 
 .card-top {
@@ -299,7 +299,7 @@ label {
   margin-right: 10px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 437px) {
   .row {
     display: block;
   }
@@ -307,10 +307,19 @@ label {
     width: 100%;
   }
 
-  .title-heading {
-
+  .title-heading h1 {
+    font-size: 2em;
   }
 
+  .btn-container button {
+    display: block;
+    width: 250px;
+    margin-bottom: 8px;
+  }
+
+  .btn-container {
+    margin-bottom: -9px;
+  }
 
 }
 

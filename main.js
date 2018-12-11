@@ -15,6 +15,7 @@ var highOrLow1 = document.querySelector('.high-or-low1');
 var highOrLow2 = document.querySelector('.high-or-low2');
 var challenger1Name = document.querySelector('.challenger1-name');
 var challenger2Name = document.querySelector('.challenger2-name');
+var winnerName = document.querySelector('.winner-name');
 
 // Buttons
 var updateRangeBtn = document.querySelector('#update-range');
@@ -115,7 +116,8 @@ function generateRandomNumber(min, max) {
       highOrLow1.innerText = "that's to high";
     } else {
       console.log("Correct Guess");
-      highOrLow1.innerText = "SPOT ON!"
+      highOrLow1.innerText = "SPOT ON!";
+      winnerName.innerText = challenger1Name.value;
     }
   }
 
@@ -138,6 +140,7 @@ function generateRandomNumber(min, max) {
     } else {
       console.log("Correct Guess");
       highOrLow2.innerText = "SPOT ON!"
+      winnerName.innerText = challenger2Name.value;
     }
   }
 
@@ -149,4 +152,9 @@ function generateRandomNumber(min, max) {
       highOrLow2.innerText = "Only be ONE"
       return true;
     }
+  }
+
+  // Append a new car for winner of round
+  function newWinnerCard() {
+
   }
