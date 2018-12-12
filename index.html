@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Number Guesser</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="reset.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
@@ -25,7 +26,8 @@
         <fieldset class="range-row">
             <form class="range-box">
             <label for="min-range" class="range-alignment">Min Range</label>
-            <input type="number" name="min-range" class="box-size min-range">
+            <input type="number" name="min-range" class="box-size min-range invalid-error">
+            <!-- <i class="fas fa-exclamation-triangle"></i> -->
             </form>
         </fieldset>
         <fieldset class="range-row">
@@ -85,7 +87,7 @@
         </div>
       </section>
     </section>
-    <section class="right-side column">
+    <section class="right-side">
       <!-- Winner Cards -->
       <div class="winner-card">
         <div class="card-top center-text">
@@ -100,7 +102,7 @@
         </div>
         <hr>
         <div class="card-bottom">
-          <p>GUESSES <span>MINUTES</span></p>
+          <p> # GUESSES <span>-- MINUTES</span></p>
           <button type="submit" name="delete" class="delete-btn">x</button>
         </div>
       </div>

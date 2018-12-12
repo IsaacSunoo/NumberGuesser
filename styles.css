@@ -115,6 +115,10 @@ label {
   width: 415px;
 }
 
+.invalid-error {
+  border-color: #DD1972;
+}
+
 /* .title-caption:before,
 .title-caption:after {
   background-color: white;
@@ -153,7 +157,8 @@ label {
   background-color: #DD1972;
 }
 
-.column {
+.column,
+.right-side {
   float: left;
   width: 50%;
   padding: 10px;
@@ -178,7 +183,7 @@ label {
   clear:both;
 }
 
-.current-guess {
+.uess {
   color: #DD1972;
   font-weight: 800;
   font-size: 3em;
@@ -297,6 +302,13 @@ label {
 .margin-left-right {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.current-guess {
+  color: #DD1972;
+  font-weight: 800;
+  font-size: 3em;
+  text-align: center;
 }
 
 @media screen and (max-width: 437px) {

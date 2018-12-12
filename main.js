@@ -28,6 +28,7 @@ var randomNumber = null;
 // Event Listeners
 updateRangeBtn.addEventListener('click', setMinAndMaxRange);
 nameGuessBtn.addEventListener('click', setNamesAndGuesses);
+resetGameBtn.addEventListener('click', resetGame);
 
 // Change min and max range numbers
 function setMinAndMaxRange(e) {
@@ -81,6 +82,15 @@ function displayNames() {
   console.log("Challenger TWO Name: " + challenger2Name.value);
 }
 
+function resetNames() {
+  for (var i = 0; i < displayName1.length; i++) {
+    displayName1[i].innerText = "Challenger 1 Name";
+  }
+  for (var i = 0; i < displayName2.length; i++) {
+    displayName2[i].innerText = "Challenger 2 Name";
+  }
+}
+
 // function displayGuess() {
 //   displayGuess1.innerText = challenger1Guess;
 //   displayGuess2.innerText = challenger2Guess;
@@ -116,7 +126,8 @@ function generateRandomNumber(min, max) {
       highOrLow1.innerText = "that's to high";
     } else {
       console.log("Correct Guess");
-      highOrLow1.innerText = "SPOT ON!";
+      highOrLow1.innerText = "BOOM!";
+      // newWinnerCard();
       winnerName.innerText = challenger1Name.value;
     }
   }
@@ -139,7 +150,7 @@ function generateRandomNumber(min, max) {
       highOrLow2.innerText = "that's to high";
     } else {
       console.log("Correct Guess");
-      highOrLow2.innerText = "SPOT ON!"
+      highOrLow2.innerText = "BOOM!"
       winnerName.innerText = challenger2Name.value;
     }
   }
@@ -154,7 +165,54 @@ function generateRandomNumber(min, max) {
     }
   }
 
+  // Clear button
+  function clearInputs(guess1, guess2) {
+    if(!guess1 === undefined && !guess2 === undefined) {
+      clearGameBtn.classList.remove('disabled-btn');
+      guess1.innerText = "--"
+      guess2.innerText = "--"
+      console.log("Inputs have been cleared");
+    }
+  }
+
+  // Reset game
+  function resetGame(e) {
+    setMinAndMaxRange(e);
+    displayGuess1.innerText = "0";
+    displayGuess2.innerText = "0";
+    resetNames();
+  }
+
+  // Display Error Messages
+  function displayError() {
+    
+  }
+
+  // Add 10 to max and decrease min by 10;
+  function alterGamerRange(min, max) {
+
+  }
+
+  var section = document.querySelector('.right-side');
   // Append a new car for winner of round
   function newWinnerCard() {
-
+    var newCard =
+    `<div class="winner-card">
+      <div class="card-top center-text">
+        <h3 class="display-name1">CHALLENGER 1 NAME</h3>
+        <span class="margin-left-right">vs</span>
+        <span class="dark"><h3 class="display-name2">CHALLENGER 2 NAME</h3></span>
+      </div>
+      <hr>
+      <div class="card-middle center-text">
+        <h2 class="winner-name">CHALLENGER NAME</h2>
+        <span class="winner-name">WINNER</span>
+      </div>
+      <hr>
+      <div class="card-bottom">
+        <p>GUESSES <span>MINUTES</span></p>
+        <button type="submit" name="delete" class="delete-btn">x</button>
+      </div>
+    </div>`;
+    section.innerText += newCard;
   }
