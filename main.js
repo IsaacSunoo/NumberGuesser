@@ -67,9 +67,6 @@ function setNamesAndGuesses(e) {
   var challenger1Guess = parseInt(challenger1GuessInput.value);
   var challenger2Guess = parseInt(challenger2GuessInput.value);
 
-  console.log(challenger1Guess);
-  console.log(challenger1Name.value);
-
   displayNames();
   displayEmptyInputError();
 
@@ -176,8 +173,6 @@ function generateRandomNumber(min, max) {
       newWinnerCard(challenger1Name.value, challenger2Name.value, challenger2Name.value);
       // winnerName.innerText = challenger2Name.value;
       alterGamerRange(min, max);
-      console.log("The new Minimum range is: " + min);
-      console.log("The new Maximum range is: " + max);
     }
   }
 
@@ -197,7 +192,6 @@ function generateRandomNumber(min, max) {
     for (var i = 0; i < allInputs.length; i++) {
       allInputs[i].value = '';
     }
-    console.log("All inputs cleared");
   }
   // function clearInputs(guess1, guess2) {
   //   if(!guess1 === undefined && !guess2 === undefined) {
@@ -254,10 +248,8 @@ function generateRandomNumber(min, max) {
     var valueTwo = parseInt(challenger2GuessInput.value);
     if(!isNaN(valueOne) || !isNaN(valueTwo)) {
       resetGameBtn.disabled = false;
-      console.log("false");
     } else {
       resetGameBtn.disabled = true;
-      console.log("true");
     }
   }
 
@@ -274,11 +266,9 @@ function generateRandomNumber(min, max) {
   function alterGamerRange(min, max) {
     if (min >= 10) {
       min -= 10;
-      console.log("Minimum is decrimented by 10: " + min);
     } else if (min < 10) {
       min = 0;
     }
-
     max += 10;
   }
 
@@ -309,9 +299,7 @@ function generateRandomNumber(min, max) {
 
   // Delete card
   function deleteCard(e) {
-    console.log("Function call delete card");
     if (event.target.className === 'delete-btn'){
         event.target.parentElement.parentElement.remove();
       }
-    console.log("delete button clicked");
   }
