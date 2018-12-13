@@ -7,8 +7,8 @@ var minNumber = document.querySelector('.min-number');
 var maxNumber = document.querySelector('.max-number');
 
 // User names and guesses
-var displayName1 = document.querySelectorAll('.display-name1');
-var displayName2 = document.querySelectorAll('.display-name2');
+var displayName1 = document.querySelector('.display-name1');
+var displayName2 = document.querySelector('.display-name2');
 var displayGuess1 = document.querySelector('.c1-current-guess');
 var displayGuess2 = document.querySelector('.c2-current-guess');
 var highOrLow1 = document.querySelector('.high-or-low1');
@@ -35,10 +35,13 @@ resetGameBtn.addEventListener('click', resetGame);
 deleteBtn = addEventListener('click', deleteCard);
 clearGameBtn.addEventListener('click', clearInputs);
 window.addEventListener('load', disableClearBtn);
+window.addEventListener('load', disableResetBtn);
 challenger1Name.addEventListener('keyup', disableClearBtn);
 challenger2Name.addEventListener('keyup', disableClearBtn);
 challenger1GuessInput.addEventListener('keyup', disableClearBtn);
 challenger2GuessInput.addEventListener('keyup', disableClearBtn);
+challenger1GuessInput.addEventListener('keyup', disableResetBtn);
+challenger2GuessInput.addEventListener('keyup', disableResetBtn);
 
 
 // Change min and max range numbers
@@ -83,16 +86,18 @@ function setNamesAndGuesses(e) {
 
 // Display Names On scorecard and winner card
 function displayNames() {
-  for (var i = 0; i < displayName1.length; i++) {
-    displayName1[i].innerText = challenger1Name.value;
-  }
-  console.log("display name ONE: " + displayName1[i]);
-  console.log("challenger TWO Name: " + challenger1Name.value);
-  for (var i = 0; i < displayName2.length; i++) {
-    displayName2[i].innerText = challenger2Name.value;
-  }
-  console.log("Display name TWO: " + displayName2[i]);
-  console.log("Challenger TWO Name: " + challenger2Name.value);
+  displayName1.innerText = challenger1Name.value;
+  displayName2.innerText = challenger2Name.value;
+  // for (var i = 0; i < displayName1.length; i++) {
+  //   displayName1[i].innerText = challenger1Name.value;
+  // }
+  // console.log("display name ONE: " + displayName1[i]);
+  // console.log("challenger TWO Name: " + challenger1Name.value);
+  // for (var i = 0; i < displayName2.length; i++) {
+  //   displayName2[i].innerText = challenger2Name.value;
+  // }
+  // console.log("Display name TWO: " + displayName2[i]);
+  // console.log("Challenger TWO Name: " + challenger2Name.value);
 }
 
 function resetNames() {
@@ -141,8 +146,8 @@ function generateRandomNumber(min, max) {
     } else {
       console.log("Correct Guess");
       highOrLow1.innerText = "BOOM!";
-      newWinnerCard();
-      winnerName.innerText = challenger1Name.value;
+      newWinnerCard(challenger1Name.value, challenger2Name.value, challenger1Name.value);
+      // winnerName.innerText = challenger1Name.value;
       alterGamerRange(min, max);
       console.log("The new Minimum range is: " + min);
       console.log("The new Maximum range is: " + max);
@@ -168,8 +173,8 @@ function generateRandomNumber(min, max) {
     } else {
       console.log("Correct Guess");
       highOrLow2.innerText = "BOOM!"
-      newWinnerCard();
-      winnerName.innerText = challenger2Name.value;
+      newWinnerCard(challenger1Name.value, challenger2Name.value, challenger2Name.value);
+      // winnerName.innerText = challenger2Name.value;
       alterGamerRange(min, max);
       console.log("The new Minimum range is: " + min);
       console.log("The new Maximum range is: " + max);
@@ -217,12 +222,11 @@ function generateRandomNumber(min, max) {
     var min = parseInt(minRangeInput.value);
     var max = parseInt(maxRangeInput.value);
 
-    if(min >= max || min.value === '' || max.value === '' || isNaN(min.value) || isNaN(max.value)) {
+    if(min >= max || isNaN(min.value) || isNaN(max.value)) {
       minRangeInput.style.borderColor = "#DD1972";
       maxRangeInput.style.borderColor = "#DD1972";
-      alert("Minimum number must be less then Max number & Input can't be empty")
+      // alert("Minimum number must be less then Max number & Input can't be empty")
     }
-
     if(max > min || !isNaN(min.value) || !isNaN(max.value)){
       minRangeInput.style.border = "#DCDCDC solid 2px";
       maxRangeInput.style.border = "#DCDCDC solid 2px";
@@ -245,10 +249,15 @@ function generateRandomNumber(min, max) {
 
   // Disable Reset button if nothing to reset
   function disableResetBtn(e) {
-    if(!isNaN(challenger1GuessInput.value) ) {
+    console.log("Disabled reset button");
+    var valueOne = parseInt(challenger1GuessInput.value);
+    var valueTwo = parseInt(challenger2GuessInput.value);
+    if(!isNaN(valueOne) || !isNaN(valueTwo)) {
       resetGameBtn.disabled = false;
+      console.log("false");
     } else {
-      resetGameBtn.disabled = false;
+      resetGameBtn.disabled = true;
+      console.log("true");
     }
   }
 
@@ -274,18 +283,18 @@ function generateRandomNumber(min, max) {
   }
 
   // Append a new car for winner of round
-  function newWinnerCard() {
+  function newWinnerCard(challenger1, challenger2, winner) {
     var newCard =
     `
     <div class="winner-card">
       <div class="card-top center-text">
-        <h3 class="display-name1">CHALLENGER 1 NAME</h3>
+        <h3 class="display-name1">${challenger1}</h3>
         <span class="margin-left-right">vs</span>
-        <span class="dark"><h3 class="display-name2">CHALLENGER 2 NAME</h3></span>
+        <span class="dark"><h3 class="display-name2">${challenger2}</h3></span>
       </div>
       <hr>
       <div class="card-middle center-text">
-        <h2 class="winner-name">CHALLENGER NAME</h2>
+        <h2 class="winner-name">${winner}</h2>
         <span class="winner-name">WINNER</span>
       </div>
       <hr>

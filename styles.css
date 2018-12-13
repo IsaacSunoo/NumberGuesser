@@ -65,11 +65,6 @@ h3 {
   margin-left: -100px;
 }
 
-.delete-btn {
-display: flex;
-align-items: flex-end;
-}
-
 .horizontal-line {
   display: grid;
   grid-template-columns: 20% 60% 20%;
@@ -175,7 +170,7 @@ label {
 }
 
 .error-message {
-  content:url()
+  background-image: url(images/error-icon.svg);
 }
 
 .button-design:hover {
@@ -321,6 +316,11 @@ label {
   transition: 0.3s;
 }
 
+.delete-btn {
+  display: flex;
+  align-items: flex-end;
+}
+
 .delete-btn:hover {
   background-color: #DD1972;
 }
@@ -349,7 +349,7 @@ label {
   text-align: center;
 }
 
-@media screen and (max-width: 437px) {
+@media screen and (max-width: 455px) {
   .row {
     display: block;
   }
@@ -371,9 +371,23 @@ label {
     margin-bottom: -9px;
   }
 
+
+
+  .challenger-name,
+  .challenger2-guess,
+  .challenger1-guess,
+  .min-range,
+  .max-range {
+    width: 300px;
+  }
+
+  .range-row {
+    display: block;
+  }
+
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 887px) {
   .row {
     display: block;
   }
