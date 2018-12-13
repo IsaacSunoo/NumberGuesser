@@ -26,12 +26,12 @@ input {
   /* background-color: #F7F7F7; */
   background-color: black;
   padding-left: 30px;
-  height: 100vh;
+  height: 70vh;
 }
 
 .right-side {
   background-color: #D0D2D3;
-  height: 100vh;
+  height: 70vh;
 }
 
 h1 {
@@ -54,6 +54,20 @@ h3 {
   color: white;
   font-weight: 200;
   font-size: 14px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-bottom span {
+  margin-left: -100px;
+}
+
+.delete-btn {
+display: flex;
+align-items: flex-end;
 }
 
 .horizontal-line {
@@ -160,15 +174,19 @@ label {
   outline: none;
 }
 
+.error-message {
+  content:url()
+}
+
 .button-design:hover {
   background-color: #DD1972;
 }
 
-.column,
-.right-side {
+.column {
   float: left;
   width: 50%;
   padding: 10px;
+  overflow: scroll;
 }
 
 .challenger-range-section {
@@ -292,6 +310,19 @@ label {
 .card-middle span {
   font-size: 30px;
   color: #6E6E6E;
+}
+
+.delete-btn {
+  background-color: #6E6E6E;
+  color: white;
+  border-radius: 50%;
+  height: 25px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #DD1972;
 }
 
 .card-top .display-name1,

@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="reset.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
 </head>
 <body>
   <header>
@@ -27,10 +26,11 @@
             <form class="range-box">
             <label for="min-range" class="range-alignment">Min Range</label>
             <input type="number" name="min-range" class="box-size min-range">
-            <div class="">
+            <div class="error-message">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.17 7.21"><defs><style>.cls-1{fill:#dd1972;}.cls-2{fill:#fff;}</style></defs><title>error-icon</title><g id="Layer_1" data-name="Layer 1"><path class="cls-1" d="M.26,6,3.62.38a.63.63,0,0,1,.88,0L7.91,6.08a.61.61,0,0,1-.43,1.06L.71,7.07A.63.63,0,0,1,.26,6Z"/><path class="cls-2" d="M4.5,4.74H3.68L3.55,2.39H4.63Zm-.94.88a.49.49,0,0,1,.14-.36.57.57,0,0,1,.39-.12.57.57,0,0,1,.39.12.53.53,0,0,1,.13.36A.47.47,0,0,1,4.47,6a.56.56,0,0,1-.38.12A.61.61,0,0,1,3.7,6,.47.47,0,0,1,3.56,5.62Z"/></g></svg>
               Min range MUST be less than max range
-            </div> -->
+             -->
+           </div>
             </form>
         </fieldset>
         <fieldset class="range-row">
@@ -90,7 +90,7 @@
         </div>
       </section>
     </section>
-    <section class="right-side">
+    <section class="right-side column">
       <!-- Winner Cards -->
       <div class="winner-card">
         <div class="card-top center-text">
@@ -105,14 +105,12 @@
         </div>
         <hr>
         <div class="card-bottom">
-          <p> # GUESSES <span>-- MINUTES</span></p>
-          <button type="submit" name="delete" id="delete-btn">x</button>
+          <p> # GUESSES </p><span>-- MINUTES</span>
+          <button type="submit" name="delete" class="delete-btn">X</button>
         </div>
       </div>
     </section>
   </section>
-
   <script src="main.js"></script>
 </body>
-
 </html>
