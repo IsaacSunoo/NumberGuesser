@@ -22,6 +22,7 @@ var updateRangeBtn = document.querySelector('#update-range');
 var nameGuessBtn = document.querySelector('#name-guess-submit');
 var resetGameBtn = document.querySelector('#reset-game-btn');
 var clearGameBtn = document.querySelector('#clear-game-btn');
+var deleteBtn = document.querySelector('#delete-btn');
 
 var randomNumber = null;
 
@@ -29,6 +30,8 @@ var randomNumber = null;
 updateRangeBtn.addEventListener('click', setMinAndMaxRange);
 nameGuessBtn.addEventListener('click', setNamesAndGuesses);
 resetGameBtn.addEventListener('click', resetGame);
+challenger1GuessInput.addEventListener('keyup', disableClearBtn);
+challenger2GuessInput.addEventListener('keyup', disableClearBtn);
 
 // Change min and max range numbers
 function setMinAndMaxRange(e) {
@@ -42,6 +45,7 @@ function setMinAndMaxRange(e) {
   console.log(minRangeValue);
   console.log(maxRangeValue);
   generateRandomNumber(minRangeValue, maxRangeValue);
+  displayRangeError();
 }
 
 // Change name and guesses
@@ -56,6 +60,7 @@ function setNamesAndGuesses(e) {
   console.log(challenger1Name.value);
 
   displayNames();
+  displayEmptyInputError();
 
   displayGuess1.innerText = challenger1Guess;
   displayGuess2.innerText = challenger2Guess;
@@ -66,6 +71,9 @@ function setNamesAndGuesses(e) {
     evaluateGuessOne(challenger1Guess, randomNumber, minRangeValue, maxRangeValue);
     evaluateGuessTwo(challenger2Guess, randomNumber, minRangeValue, maxRangeValue);
   }
+
+
+
 }
 
 // Display Names On scorecard and winner card
@@ -89,6 +97,7 @@ function resetNames() {
   for (var i = 0; i < displayName2.length; i++) {
     displayName2[i].innerText = "Challenger 2 Name";
   }
+
 }
 
 // function displayGuess() {
@@ -127,8 +136,8 @@ function generateRandomNumber(min, max) {
     } else {
       console.log("Correct Guess");
       highOrLow1.innerText = "BOOM!";
-      // newWinnerCard();
-      winnerName.innerText = challenger1Name.value;
+      // winnerName.innerText = challenger1Name.value;
+      newWinnerCard(challenger1Name.innerText, challenger2Name.innerText, challenger1Name.innerText);
     }
   }
 
@@ -151,7 +160,9 @@ function generateRandomNumber(min, max) {
     } else {
       console.log("Correct Guess");
       highOrLow2.innerText = "BOOM!"
+      newWinnerCard();
       winnerName.innerText = challenger2Name.value;
+      newWinnerCard(challenger1Name.innerText, challenger2Name.innerText, challenger2Name.innerText);
     }
   }
 
@@ -184,8 +195,50 @@ function generateRandomNumber(min, max) {
   }
 
   // Display Error Messages
-  function displayError() {
-    
+  function displayRangeError() {
+    var min = parseInt(minRangeInput.value);
+    var max = parseInt(maxRangeInput.value);
+
+    if(min >= max | isNaN(min.value) | isNaN(max.value)) {
+      minRangeInput.style.borderColor = "#DD1972";
+      maxRangeInput.style.borderColor = "#DD1972";
+      alert("Minimum number must be less then Max number & Input can't be empty")
+    }
+
+    if(max > min | isNaN(min.value) | isNaN(max.value)){
+      minRangeInput.style.border = "#DCDCDC solid 2px";
+      maxRangeInput.style.border = "#DCDCDC solid 2px";
+    }
+
+
+  }
+
+  // Display error if input box is empty
+  function displayEmptyInputError() {
+    if (challenger1Name.value === "" | challenger2Name.value === "") {
+      challenger1Name.style.borderColor = "#DD1972";
+      challenger2Name.style.borderColor = "#DD1972";
+      alert("Name must be entered");
+    }
+    if (challenger1GuessInput.value === "" | challenger2GuessInput.value === "") {
+      challenger1GuessInput.style.border = "#DCDCDC solid 2px";
+      challenger2GuessInput.style.border = "#DCDCDC solid 2px";
+      alert("Player must enter a guess");
+    }
+  }
+
+  // Disable Reset button if nothing to reset
+  function disableResetBtn(e) {
+
+  }
+
+  // Disable Clear button if nothing to clear
+  function disableClearBtn(e) {
+    if(challenger1GuessInput.value !== '' && challenger2GuessInput.value !== '') {
+      clearGameBtn.disabled = false;
+    } else {
+      clearGameBtn.disabled = true;
+    }
   }
 
   // Add 10 to max and decrease min by 10;
@@ -193,19 +246,22 @@ function generateRandomNumber(min, max) {
 
   }
 
-  var section = document.querySelector('.right-side');
+
+
+  var appendSection = document.querySelector('.right-side');
   // Append a new car for winner of round
-  function newWinnerCard() {
+  function newWinnerCard(challenger1, challenger2, winner) {
     var newCard =
-    `<div class="winner-card">
+    `
+    <div class="winner-card">
       <div class="card-top center-text">
-        <h3 class="display-name1">CHALLENGER 1 NAME</h3>
+        <h3 class="display-name1">${challenger1}</h3>
         <span class="margin-left-right">vs</span>
-        <span class="dark"><h3 class="display-name2">CHALLENGER 2 NAME</h3></span>
+        <span class="dark"><h3 class="display-name2"${challenger2}</h3></span>
       </div>
       <hr>
       <div class="card-middle center-text">
-        <h2 class="winner-name">CHALLENGER NAME</h2>
+        <h2 class="winner-name">C${winner}</h2>
         <span class="winner-name">WINNER</span>
       </div>
       <hr>
@@ -213,6 +269,14 @@ function generateRandomNumber(min, max) {
         <p>GUESSES <span>MINUTES</span></p>
         <button type="submit" name="delete" class="delete-btn">x</button>
       </div>
-    </div>`;
-    section.innerText += newCard;
+    </div>
+    `
+    appendSection.innerHTML = newCard + appendSection.innerHTML;
+  }
+
+  // Delete card
+  function deleteCard() {
+    if (event.target.className === deleteBtn) {
+      event.target.parentElement.parentElement.remove();
+    }
   }

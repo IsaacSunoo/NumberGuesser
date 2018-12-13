@@ -26,10 +26,12 @@ input {
   /* background-color: #F7F7F7; */
   background-color: black;
   padding-left: 30px;
+  height: 100vh;
 }
 
 .right-side {
   background-color: #D0D2D3;
+  height: 100vh;
 }
 
 h1 {
@@ -69,6 +71,10 @@ hr {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+svg {
+  height: 12px;
 }
 
 section article h3 {
@@ -117,6 +123,7 @@ label {
 
 .invalid-error {
   border-color: #DD1972;
+
 }
 
 /* .title-caption:before,
@@ -183,7 +190,7 @@ label {
   clear:both;
 }
 
-.uess {
+.guess {
   color: #DD1972;
   font-weight: 800;
   font-size: 3em;
@@ -229,7 +236,7 @@ label {
   border:#DCDCDC solid 2px;
 }
 
-.disabled-btn {
+.disabled-btn:disabled {
   background-color: #D0D2D3;
   color: #FFFFFF;
 }
@@ -237,7 +244,7 @@ label {
 .score-section {
   display: grid;
   grid-template-columns: 50% 50%;
-  padding-top: 8px;
+  padding`-top: 8px;
   padding-bottom: 14px;
   margin-bottom: 6px;
 }
