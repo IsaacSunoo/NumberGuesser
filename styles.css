@@ -23,8 +23,8 @@ input {
 }
 
 .left-side {
-  /* background-color: #F7F7F7; */
-  background-color: black;
+  background-color: #F7F7F7;
+  /* background-color: black; */
   padding-left: 30px;
   height: 70vh;
 }
