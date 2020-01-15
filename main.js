@@ -289,7 +289,7 @@ function generateRandomNumber(min, max) {
       </div>
       <hr>
       <div class="card-bottom">
-        <p> # GUESSES </p><span>-- MINUTES</span>
+        <p> 2 GUESSES </p><span>.05 MINUTES</span>
         <button type="submit" name="delete" class="delete-btn">X</button>
       </div>
     </div>
